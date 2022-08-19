@@ -1,14 +1,20 @@
 const router = require('express').Router();
-const axios = require('axios');
+const { Tipo } = require('../db.js');
 
-module.exports= router.get('/', async function (req, res) {
 
-    const {id} = req.params;
+router.get('/', async function (req, res) {
 
     try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        res.json(response.data);
+        const types = await Tipo.findAll({
+            attributes: ['nombre']
+        });
+
+        return res.json(types);
+
     } catch (error) {
-        res.status(404).send('Pokemon no encontrado', error);
+
+        return res.status(404).send(`Error al cargar la lista de tipos. ${error.message}`);
     };
 });
+
+module.exports = router;

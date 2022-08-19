@@ -11,10 +11,6 @@ module.exports = (sequelize) => {
         nombre: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        del_usuario: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
         }
     }, { timestamps: false });
 };

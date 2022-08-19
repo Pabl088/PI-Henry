@@ -36,7 +36,8 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     },
     img: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: 'https://i.ibb.co/44r9S6b/Desconocido-Pokemon.webp'
     },
     del_usuario: {
       type: DataTypes.BOOLEAN,

@@ -22,29 +22,11 @@ const loadPokes = async () => {
         const response = (await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40')).data;
         const arrUrlPoke = response.results.map(item => item.url);
 
-        // const pokes = await Promise.all(arrUrlPoke.map(async url => {
-        //     const poke = (await axios.get(url)).data;
-        //     return {
-        //         nombre: poke.name,
-        //         tipo: poke.types.map(item => item.type.name).join(', '),
-        //         vida: poke.stats[0].base_stat,
-        //         ataque: poke.stats[1].base_stat,
-        //         defensa: poke.stats[2].base_stat,
-        //         velocidad: poke.stats[5].base_stat,
-        //         altura: poke.height,
-        //         peso: poke.weight,
-        //         img: poke.sprites.other['official-artwork'].front_default
-        //     };
-        // }));
-
-        //await Pokemon.bulkCreate(pokes);
-
         await Promise.all(arrUrlPoke.map(async url => {
             const poke = (await axios.get(url)).data;
 
             const pokeDB = await Pokemon.create({
                 nombre: poke.name,
-                //tipo: poke.types.map(item => item.type.name).join(', '),
                 vida: poke.stats[0].base_stat,
                 ataque: poke.stats[1].base_stat,
                 defensa: poke.stats[2].base_stat,
@@ -55,8 +37,8 @@ const loadPokes = async () => {
             });
 
             for (const item of poke.types) {
-                const typeDB = await Tipo.findAll({ where: { nombre: item.type.name } });
-                pokeDB.addTipo(typeDB);
+                const typeDB = await Tipo.findOne({ where: { nombre: item.type.name } });
+                await pokeDB.addTipo(typeDB);
             };
         }));
 
