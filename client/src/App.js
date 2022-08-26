@@ -14,12 +14,12 @@ function App() {
         <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/pokemons/:id" component={CardDetail} />
-        <Route exact path="/pokemons/create" component={Form} />
+        <Route exact path="/create" component={Form} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/:rutaerronea" component={Landing} />
+        <Route exact path="/:rutaerronea" component={Home} />
       </Switch>
     </>
   );
-}
+};
 
 export default App;

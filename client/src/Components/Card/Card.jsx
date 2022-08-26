@@ -4,18 +4,23 @@ import s from './Card.module.css';
 
 export default function Card(props) {
 
-    const { ID, nombre, tipo, img } = props;
+    const { ID, nombre, Tipos, img } = props;
 
     return (
-        <div className={s.Card}>
-            <div className={s.CardFront}>
-                <img src={img} alt="Pokemon image" />
-                <h1>{nombre}</h1>
-            </div>
-            <div className={s.CardBack}>
-                <h1>{nombre}</h1>
-                <p>TIPO</p>
-                {/* FUNCION PARA RENDERIZAR LOS TIPOS */}
+        <div className={s.Main}>
+            <div className={s.Card}>
+                <div className={s.CardFront}>
+                    <h1>{nombre}</h1>
+                    <img src={img} alt="Pokemon image" />
+                </div>
+                <div className={s.CardBack}>
+                    <Link to={`/pokemons/${props.ID}`} className={s.Link}>
+                        <h1>{nombre}</h1>
+                        <p>TIPOS:</p>
+                        <div className={s.Types}>{Tipos.map((t, i) => <p key={i}>{t.nombre}</p>)}</div>
+                        <p>ID: {ID}</p>
+                    </Link>
+                </div>
             </div>
         </div>
     );

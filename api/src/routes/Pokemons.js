@@ -11,7 +11,6 @@ router.get('/', async function (req, res) {
         try {
             const poke = await Pokemon.findOne({
                 where: { nombre: name },
-                // attributes: ['nombre', 'img', 'ID'],
                 include: {
                     model: Tipo,
                     attributes: ['nombre'],
@@ -34,7 +33,7 @@ router.get('/', async function (req, res) {
         if (!pokesApi.length) await loadPokes();
 
         const pokes = await Pokemon.findAll({
-            attributes: ['nombre', 'img', 'ID'],
+            //attributes: ['nombre', 'img', 'ID'],
             include: {
                 model: Tipo,
                 attributes: ['nombre'],
@@ -75,9 +74,9 @@ router.get('/:id', async function (req, res) {
 
 router.post('/create', async function (req, res) {
 
-    const { nombre, vida, ataque, defensa, velocidad, altura, peso, tipo, img } = req.body;
+    const { nombre, vida, ataque, defensa, velocidad, altura, peso, Tipos, img } = req.body;
 
-    if (!nombre || !vida || !ataque || !defensa || !velocidad || !altura || !peso || !tipo) return res.status(400).send(`Debes completar todos los campos para crear el Pókemon`);
+    if (!nombre || !vida || !ataque || !defensa || !velocidad || !altura || !peso || !Tipos) return res.status(400).send(`Debes completar todos los campos para crear el Pókemon`);
     try {
         const pokeUser = await Pokemon.create({
             nombre,
@@ -91,7 +90,7 @@ router.post('/create', async function (req, res) {
             del_usuario: true
         });
 
-        for (const item of tipo) {
+        for (const item of Tipos) {
             const typeDB = await Tipo.findOne({ where: { nombre: item } });
             await pokeUser.addTipo(typeDB);
         };
