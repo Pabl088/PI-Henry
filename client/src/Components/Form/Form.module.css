@@ -1,0 +1,14 @@
+.background {
+    /* display: flex;
+    justify-content: center; */
+    background: url(./Images/live-wallpaper.gif) no-repeat center fixed;
+    background-size: cover;
+}
+
+.main {
+    display: flex;
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    width: 800px;
+    height: 600px;
+}

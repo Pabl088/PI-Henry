@@ -39,8 +39,16 @@ function Reducer(state = initialState, action) {
             if (action.payload.orden === "filter") {
                 if (action.payload.tipo === "TODOS") {
                     result = state.pokemons;
+                    return {
+                        ...state,
+                        allCurrentPokemons: [...result]
+                    };
                 } else {
                     result = order.filterByType(action.payload.tipo, state.allCurrentPokemons);
+                    return {
+                        ...state,
+                        allCurrentPokemons: [...result]
+                    };
                 };
             };
             if (action.payload.orden === "AZ") {
@@ -57,7 +65,8 @@ function Reducer(state = initialState, action) {
             };
             return {
                 ...state,
-                allCurrentPokemons: [...result]
+                allCurrentPokemons: [...result],
+                pokemons: [...result]
             };
         case GET_CREATES:
             return {

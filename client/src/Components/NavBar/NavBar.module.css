@@ -1,0 +1,94 @@
+.title {
+    display: inline;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.title img {
+    width: 600px;
+    height: 180px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.list {
+    width: 385px;
+}
+
+.resetFilter {
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 15px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border: 2px black solid;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.1s;
+}
+
+.resetFilter:active {
+    transform: scale(0.90);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.form {
+    margin-top: 130px;
+    margin-left: 15px;
+}
+
+.input {
+    width: 410px;
+}
+
+.sbutton {
+    background: transparent;
+    border: 0;
+}
+
+.sbutton img {
+    width: 40px;
+    height: 25px;
+    margin-top: 20px;
+}
+
+.input {
+    border-bottom: 2px black solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    color: black;
+    font-size: 30px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.NavLink {
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.NavLink:visited {
+    color: black;
+}
+
+.NavLink:hover {
+    font-size: 30px;
+}

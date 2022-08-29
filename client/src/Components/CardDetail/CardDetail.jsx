@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getById, cleanDetails, getTypes } from '../../Redux/actions.js';
+import { getById, cleanDetails, getTypes, getPokemons } from '../../Redux/actions.js';
 import s from './CardDetail.module.css';
+import image from './Images/desconocido.gif';
 
 export default function CardDetail(props) {
 
@@ -22,7 +23,7 @@ export default function CardDetail(props) {
 
     const handleBack = () => {
         history.goBack();
-        dispatch(getTypes());
+        dispatch(getPokemons());
     };
 
     const pokemon = useSelector(state => state.currentPokemon);
@@ -36,7 +37,7 @@ export default function CardDetail(props) {
                         <div className={s.Card}>
                             <div className={s.CardFront}>
                                 <h1>{pokemon.nombre}</h1>
-                                <img src={pokemon.img} alt="Pokemons" />
+                                <img src={!pokemon.img ? image : pokemon.img} alt="Pokemons" />
                             </div>
                             <div className={s.CardBack}>
                                 <h1>{pokemon.nombre}</h1>

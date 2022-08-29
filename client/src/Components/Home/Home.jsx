@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '../Card/Card.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import Pages from '../Pages/Pages.jsx';
-import { getPokemons, orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, updatePage } from '../../Redux/actions.js';
-import sCard from '../Card/Card.module.css';
+import { orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, getPokemons, updatePage } from '../../Redux/actions.js';
 import s from './Home.module.css';
+import pokebola from './Images/pokebola.gif';
+
+let resetSelects;
 
 export default function Home() {
 
@@ -13,7 +15,7 @@ export default function Home() {
 
     const [page, setPage] = useState(currentPage);
 
-    const [forEachPage, setforEachPage] = useState(10);
+    const [forEachPage, setforEachPage] = useState(12);
 
     const dispatch = useDispatch();
 
@@ -22,14 +24,9 @@ export default function Home() {
 
     let max = pokemons.length > 1 ? Math.ceil(pokemons.length / forEachPage) : 1;
 
-    const handleTypes = () => {
-        for (const option of document.getElementById('filter').options) {
-            if (option.selected && option.value) {
-                dispatch(updatePage(1));
-                dispatch(orderPokemons("filter", option.value));
-            };
-        };
-    };
+    useEffect(() => {
+        dispatch(getPokemons());
+    }, []);
 
     useEffect(() => {
         dispatch(getAllPokemons());
@@ -37,16 +34,16 @@ export default function Home() {
         setPage(currentPage);
     }, [pokemons]);
 
-    // const handleClickShowAll = () => {
-    //     dispatch(getPokemons());
-    //     dispatch(getTypes());
-    //     dispatch(getAllPokemons());
-    //     dispatch(updatePage(1));
-    // };
-
     const handleOrders = (e) => {
         dispatch(updatePage(1));
-        dispatch(orderPokemons(e.target.name), null);
+        dispatch(orderPokemons(e.target.value), null);
+        e.target.value === 'AZ' || e.target.value === 'ZA' ? document.getElementById('orderAttack').selectedIndex = 0
+            : document.getElementById('orderName').selectedIndex = 0;
+    };
+
+    const handleTypes = (e) => {
+        dispatch(updatePage(1));
+        dispatch(orderPokemons("filter", e.target.value));
     };
 
     const handleClickAPI = () => {
@@ -59,20 +56,33 @@ export default function Home() {
         dispatch(getCreates());
     };
 
+    resetSelects = () => {
+        document.getElementById('orderName').selectedIndex = 0;
+        document.getElementById('orderAttack').selectedIndex = 0;
+        document.getElementById('filter').selectedIndex = 0;
+    };
+
     return (
-        <>
+        <div className={s.Main}>
             <NavBar></NavBar>
             <div >
                 {
                     pokemons.length ? <div className={s.ContainerButtons}>
-                        <button name={"AZ"} onClick={handleOrders} className={s.buttons}>A-Z</button>
-                        <button name={"ZA"} onClick={handleOrders} className={s.buttons}>Z-A</button>
-                        <button name={"MAX_MIN"} onClick={handleOrders} className={s.buttons}>Mayor ataque</button>
-                        <button name={"MIN_MAX"} onClick={handleOrders} className={s.buttons}>Menor ataque</button>
-                        <select id="filter" name="filter" onClick={handleTypes} className={s.buttons} defaultValue="TODOS">
-                            <option value={"TODOS"} className={s.selected}>{"TODOS"}</option>
+                        <select id="orderName" onChange={handleOrders} className={s.buttons}>
+                            <option value='' selected disabled hidden>ORDENAR POR NOMBRE</option>
+                            <option value='AZ' className={s.select}>A-Z</option>
+                            <option value='ZA' className={s.select}>Z-A</option>
+                        </select>
+                        <select id="orderAttack" onChange={handleOrders} className={s.buttons}>
+                            <option value='' selected disabled hidden>ORDENAR POR ATAQUE</option>
+                            <option value="MIN_MAX" className={s.select}>MENOR ATAQUE</option>
+                            <option value="MAX_MIN" className={s.select}>MAYOR ATAQUE</option>
+                        </select>
+                        <select id="filter" name="filter" onChange={handleTypes} className={s.buttons} >
+                            <option value='' selected disabled hidden>ORDENAR POR TIPO</option>
+                            <option value={'TODOS'} className={s.select}>TODOS</option>
                             {
-                                types && types.length && types.map((t, i) => <option key={i} value={`${t.nombre}`} className={s.selected}>{`${t.nombre}`}</option>)
+                                types && types.length && types.map((t, i) => <option key={i} value={`${t.nombre}`} className={s.select}>{`${t.nombre.toUpperCase()}`}</option>)
                             }
                         </select>
                         <button onClick={handleClickDB} className={s.buttons}>SOLO CREADOS</button>
@@ -80,21 +90,26 @@ export default function Home() {
                     </div>
                         : null
                 }
-                {pokemons.length ? <Pages page={page} setPage={setPage} max={max}></Pages> : null}
+                <div className={s.pages}>
+                    {pokemons.length ? <Pages page={page} setPage={setPage} max={max}></Pages> : null}
+                </div>
             </div>
-            <div className={sCard.containerCard}>
+            <div className={s.containerCard}>
                 {
                     pokemons.length
                         ? <> {pokemons.slice((page - 1) * forEachPage, (page - 1) * forEachPage + forEachPage)
                             .map(p => <Card key={parseInt((Math.random * 1000))} {...p} />)}
                         </>
                         : !pokemons.nombre ?
-                            <div
-                                className={s.contenedorNoPokemons}><img className={s.NoPokemonsIMG} alt="nopokemonsimg" src="https://i.gifer.com/origin/7d/7dab25c7b14a249bbc4790176883d1c5_w200.gif" />
+                            <div className={s.contNoPokemons}>
+                                <img className={s.NoPokemons} alt="nopokemons" src={pokebola} />
+                                <p className={s.text}>NINGUN POKEMON COINCIDE CON LOS FILTROS ESPICIFICADOS</p>
                             </div>
                             : null
                 }
             </div>
-        </>
+        </div>
     );
 };
+
+export { resetSelects };

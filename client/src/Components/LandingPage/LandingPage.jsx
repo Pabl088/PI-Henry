@@ -23,8 +23,8 @@ function Landing() {
     return (
         <div className={s.Main}>
             {
-                pokemons.length && types.length ? <Link to="/home"><div className={s.button}>Soy el boton</div></Link> :
-                    <div className={s.loading}><span className={s.loader}></span><h1 className={s.loading}>Loading...</h1></div>
+                pokemons.length && types.length ? <Link to="/home"><div className={s.button}></div></Link> :
+                    <div className={s.loading}></div>
             }
         </div>
     );

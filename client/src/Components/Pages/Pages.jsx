@@ -18,9 +18,9 @@ export default function Pages({ page, setPage, max }) {
 
     return (
         <div className={s.Container}>
-            <button disabled={page === 1 || page < 1} onClick={previusPage} className={s.BPrevius} >{"<"}</button>
+            <button disabled={page === 1 || page < 1} onClick={previusPage} className={s.button} >{"<"}</button>
             <b className={s.text}>{page} de {max}</b>
-            <button disabled={page === Math.ceil(max) || page > Math.ceil(max)} onClick={nextPage} className={s.BNext}>{">"}</button>
+            <button disabled={page === Math.ceil(max) || page > Math.ceil(max)} onClick={nextPage} className={s.button}>{">"}</button>
         </div>
     );
 };

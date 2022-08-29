@@ -1,0 +1,19 @@
+.button {
+    font-size: 15px;
+    margin: 0 10px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border: 2px black solid;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: all 0.1s;
+}
+
+.button:active {
+    transform: scale(0.90);
+    box-shadow: 3px 2px 25px 1px rgba(0, 0, 0, 0.24);
+}
+
+.button:disabled {
+    border: 2px grey solid;
+}
