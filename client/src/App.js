@@ -5,7 +5,6 @@ import Landing from './Components/LandingPage/LandingPage.jsx';
 import Home from './Components/Home/Home.jsx';
 import CardDetail from './Components/CardDetail/CardDetail.jsx';
 import Form from './Components/Form/Form.jsx';
-import About from './Components/About/About.jsx';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/pokemons/:id" component={CardDetail} />
         <Route exact path="/create" component={Form} />
-        <Route exact path="/about" component={About} />
         <Route exact path="/:rutaerronea" component={Home} />
       </Switch>
     </>

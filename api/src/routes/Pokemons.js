@@ -33,7 +33,6 @@ router.get('/', async function (req, res) {
         if (!pokesApi.length) await loadPokes();
 
         const pokes = await Pokemon.findAll({
-            //attributes: ['nombre', 'img', 'ID'],
             include: {
                 model: Tipo,
                 attributes: ['nombre'],

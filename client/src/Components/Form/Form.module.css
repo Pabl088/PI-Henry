@@ -1,14 +1,183 @@
 .background {
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: url(./Images/live-wallpaper.gif) no-repeat center fixed;
     background-size: cover;
+    height: 100vh;
 }
 
 .main {
     display: flex;
-    backdrop-filter: blur(15px);
     flex-direction: column;
-    width: 800px;
+    justify-content: flex-start;
+    width: 1000px;
     height: 600px;
+    background-color: rgba(0, 0, 0, 0.09);
+    border: 2px black solid;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.BackButton {
+    margin: 10px 10px 10px 290px;
+    padding: 0 8px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.09);
+    border: 2px black solid;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.1s;
+}
+
+.BackButton:active {
+    transform: scale(0.90);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.title {
+    font-size: 45px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Form {
+    height: 100%;
+    width: 500px;
+}
+
+.resContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100%;
+    margin: auto 25px;
+}
+
+.response {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokeCreated {
+    display: flex;
+    text-align: center;
+}
+
+.DivInput,
+.imageFormInput {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 15px 0 15px 20px;
+}
+
+.Label {
+    font-size: 21px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.InputFormName,
+.InputForm,
+.SelectInput,
+.InputFormImg {
+    width: 80px;
+    border-bottom: 2px black solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    color: black;
+    outline: none;
+}
+
+.InputForm {
+    appearance: textfield;
+}
+
+.create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 30px;
+    margin: 30px 0 15px 200px;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.09);
+    border: 2px black solid;
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    transition: all 0.1s;
+}
+
+.create:active {
+    transform: scale(0.90);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.warning {
+    color: red;
+    margin-left: 10px;
+    transition: all 3s;
+}
+
+.errorTypes {
+    width: 200px;
+    margin-left: 10px;
+    transition: all 3s;
+}
+
+.errorType {
+    color: red;
+}
+
+.BGoPoke {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    height: 30px;
+    font-size: 25px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.09);
+    border: 2px black solid;
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    transition: all 0.1s;
+}
+
+.BGoPoke:active {
+    transform: scale(0.90);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.pikachu {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 150px;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getByName, getTypes, getPokemons } from '../../Redux/actions.js';
 import Card from '../Card/Card.jsx';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import s from './NavBar.module.css';
 import title from './Images/Pokemon.png';
 import search from './Images/search.gif';
@@ -45,27 +45,19 @@ export function NavBar() {
                                 name="name" value={input}
                                 placeholder="Buscar pokemon por nombre..."
                                 autoComplete="off"
-                                onChange={handleChange}
-                            ></input>
+                                onChange={handleChange} />
                             <button type="submit" className={s.sbutton}>
                                 <img src={search} alt="submit" />
                             </button>
                         </form>
                     </div>
-                    <div className={s.title}><img src={title} alt="Pokemon" /></div>
-                    <div className={s.list}>
-                        <ul>
-                            <li>
-                                <NavLink to="/create" className={s.NavLink}>
-                                    Crear Pokemon
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/about" className={s.NavLink}>
-                                    Acerca de
-                                </NavLink>
-                            </li>
-                        </ul>
+                    <div className={s.title}>
+                        <img src={title} alt="Pokemon" />
+                    </div>
+                    <div className={s.create}>
+                        <Link to="/create" className={s.Link}>
+                            Crear Pokemon
+                        </Link>
                     </div>
                 </div>
                 <button onClick={handleClear} className={s.resetFilter}>Quitar filtros</button>
