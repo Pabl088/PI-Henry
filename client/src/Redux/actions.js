@@ -14,9 +14,9 @@ export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS';
 export const CREATE_POKEMON = 'CREATE_POKEMON';
 export const LAST_CREATED = 'LAST_CREATED';
 export const CLEAN_FORM = 'CLEAN_FORM';
-export const MAYOR50 = 'MAYOR50';
 
 export const SERVER_URL = 'http://localhost:3001';
+
 
 export function getAllPokemons() {
     return async function (dispatch) {

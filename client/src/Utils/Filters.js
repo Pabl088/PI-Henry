@@ -51,7 +51,7 @@ function sortMax_Min(x, y) {
     if (x.ataque > y.ataque) {
         return -1;
     };
-    return 0
+    return 0;
 };
 
 
