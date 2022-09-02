@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '../Card/Card.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import Pages from '../Pages/Pages.jsx';
-import { orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, updatePage } from '../../Redux/actions.js';
+import { orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, updatePage, mayor50 } from '../../Redux/actions.js';
 import s from './Home.module.css';
 import pokebola from './Images/pokebola.gif';
 
