@@ -44,7 +44,7 @@ function Reducer(state = initialState, action) {
                         allCurrentPokemons: [...result]
                     };
                 } else {
-                    result = order.filterByType(action.payload.tipo, state.allCurrentPokemons);
+                    result = order.filterByType(action.payload.tipo, state.pokemons);
                     return {
                         ...state,
                         allCurrentPokemons: [...result]

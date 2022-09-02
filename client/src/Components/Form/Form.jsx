@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createPokemon, getTypes, getAllPokemons, cleanForm, getPokemons, updatePage } from '../../Redux/actions.js';
+import { createPokemon, getAllPokemons, cleanForm, getPokemons, updatePage } from '../../Redux/actions.js';
 import s from './Form.module.css';
 import pikachu from './Images/pikachu.gif';
 
@@ -31,17 +31,11 @@ export default function Form() {
 
     useEffect(() => {
         dispatch(getAllPokemons());
-        dispatch(getTypes());
         setNames(() => toNames);
         return () => {
             dispatch(cleanForm());
         }
     }, []);
-
-    useEffect(() => {
-        dispatch(getAllPokemons());
-    }, [pokemonName]);
-
 
     const handleClickBack = () => {
         dispatch(getPokemons());
@@ -193,51 +187,51 @@ function validateInput(input) {
     };
 
     if (!input.vida) {
-        errors.hp = "Vida es requerida.";
+        errors.hp = "Numero entero entre 1 y 200.";
     } else if (input.vida <= 0 || !/^[0-9]*$/g.test(input.vida)) {
-        errors.hp = "Vida minima es 1.";
+        errors.hp = "Numero entero mayor a 1.";
     } else if (input.vida > 200 || !/^[0-9]*$/g.test(input.vida)) {
-        errors.hp = "Vida maxima es 100.";
+        errors.hp = "Numero entero menor a 200.";
     };
 
     if (!input.ataque) {
-        errors.attack = "Ataque es requerido.";
+        errors.attack = "Numero entero entre 1 y 200.";
     } else if (input.ataque <= 0 || !/^[0-9]*$/g.test(input.ataque)) {
-        errors.attack = "Ataque minimo es 1.";
+        errors.attack = "Numero entero mayor a 1.";
     } else if (input.ataque > 200 || !/^[0-9]*$/g.test(input.ataque)) {
-        errors.attack = "Ataque maximo es 100.";
+        errors.attack = "Numero entero menor a 200.";
     };
 
     if (!input.defensa) {
-        errors.defense = "Defensa es requerida.";
+        errors.defense = "Numero entero entre 1 y 200.";
     } else if (input.defensa <= 0 || !/^[0-9]*$/g.test(input.defensa)) {
-        errors.defense = "Defensa minima es 1.";
+        errors.defense = "Numero entero mayor a 1.";
     } else if (input.defensa > 200 || !/^[0-9]*$/g.test(input.defensa)) {
-        errors.defense = "Defensa maxima es 100.";
+        errors.defense = "Numero entero menor a 200.";
     };
 
     if (!input.velocidad) {
-        errors.speed = "Velocidad es requerida.";
+        errors.speed = "Numero entero entre 1 y 200.";
     } else if (input.velocidad <= 0 || !/^[0-9]*$/g.test(input.velocidad)) {
-        errors.speed = "Velocidad minima es 1.";
+        errors.speed = "Numero entero mayor a 1.";
     } else if (input.velocidad > 200 || !/^[0-9]*$/g.test(input.velocidad)) {
-        errors.speed = "Velocidad maxima es 100.";
+        errors.speed = "Numero entero menor a 200.";
     };
 
     if (!input.altura) {
-        errors.height = "Altura es requerida.";
+        errors.height = "Numero entero entre 1 y 200.";
     } else if (input.altura <= 0 || !/^[0-9]*$/g.test(input.altura)) {
-        errors.height = "Altura minima es 1.";
+        errors.height = "Numero entero mayor a 1.";
     } else if (input.altura > 200 || !/^[0-9]*$/g.test(input.altura)) {
-        errors.height = "Altura maxima es 100.";
+        errors.height = "Numero entero menor a 200.";
     };
 
     if (!input.peso) {
-        errors.weight = "Peso es requerido.";
+        errors.weight = "Numero entero entre 1 y 200.";
     } else if (input.peso <= 0 || !/^[0-9]*$/g.test(input.peso)) {
-        errors.weight = "Peso minimo es requerido.";
+        errors.weight = "Numero entero mayor a 1.";
     } else if (input.peso > 200 || !/^[0-9]*$/g.test(input.peso)) {
-        errors.weight = "Peso maximo es 100.";
+        errors.weight = "Numero entero menor a 200.";
     };
 
     if (!input.Tipos.length || input.Tipos.length > 3) {

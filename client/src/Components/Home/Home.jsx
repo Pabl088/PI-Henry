@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '../Card/Card.jsx';
 import { NavBar } from '../NavBar/NavBar.jsx';
 import Pages from '../Pages/Pages.jsx';
-import { orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, getPokemons, updatePage } from '../../Redux/actions.js';
+import { orderPokemons, getTypes, getCreates, getAPI, getAllPokemons, updatePage } from '../../Redux/actions.js';
 import s from './Home.module.css';
 import pokebola from './Images/pokebola.gif';
 
-let resetSelects;
 
 export default function Home() {
 
@@ -25,12 +24,11 @@ export default function Home() {
     let max = pokemons.length > 1 ? Math.ceil(pokemons.length / forEachPage) : 1;
 
     useEffect(() => {
-        dispatch(getPokemons());
+        dispatch(getAllPokemons());
+        dispatch(getTypes());
     }, []);
 
     useEffect(() => {
-        dispatch(getAllPokemons());
-        dispatch(getTypes());
         setPage(currentPage);
     }, [pokemons]);
 
@@ -49,14 +47,16 @@ export default function Home() {
     const handleClickAPI = () => {
         dispatch(updatePage(1));
         dispatch(getAPI());
+        resetSelects();
     };
 
     const handleClickDB = () => {
         dispatch(updatePage(1));
         dispatch(getCreates());
+        resetSelects();
     };
 
-    resetSelects = () => {
+    const resetSelects = () => {
         document.getElementById('orderName').selectedIndex = 0;
         document.getElementById('orderAttack').selectedIndex = 0;
         document.getElementById('filter').selectedIndex = 0;
@@ -64,7 +64,7 @@ export default function Home() {
 
     return (
         <div className={s.Main}>
-            <NavBar></NavBar>
+            <NavBar resetSelects={resetSelects}></NavBar>
             <div >
                 {
                     pokemons.length ? <div className={s.ContainerButtons}>
@@ -111,5 +111,3 @@ export default function Home() {
         </div>
     );
 };
-
-export { resetSelects };

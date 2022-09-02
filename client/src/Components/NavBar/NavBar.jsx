@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getByName, getTypes, getPokemons } from '../../Redux/actions.js';
+import { getByName, getPokemons, getAllPokemons, updatePage } from '../../Redux/actions.js';
 import Card from '../Card/Card.jsx';
 import { Link } from 'react-router-dom';
 import s from './NavBar.module.css';
 import title from './Images/Pokemon.png';
 import search from './Images/search.gif';
-import { resetSelects } from '../Home/Home.jsx';
 
-
-export function NavBar() {
+export function NavBar({ resetSelects }) {
 
     const dispatch = useDispatch();
 
@@ -31,7 +29,8 @@ export function NavBar() {
 
     const handleClear = () => {
         dispatch(getPokemons());
-        dispatch(getTypes());
+        dispatch(getAllPokemons());
+        dispatch(updatePage(1));
         if (pokemon.length) resetSelects();
     };
 

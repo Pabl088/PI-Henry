@@ -17,11 +17,10 @@ export default function CardDetail(props) {
         return () => {
             dispatch(cleanDetails());
         };
-    }, [dispatch, id]);
+    }, []);
 
     const handleBack = () => {
         history.goBack();
-        dispatch(getPokemons());
     };
 
     const pokemon = useSelector(state => state.currentPokemon);
