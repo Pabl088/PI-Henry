@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getById, cleanDetails, getPokemons } from '../../Redux/actions.js';
+import { getById, cleanDetails } from '../../Redux/actions.js';
 import s from './CardDetail.module.css';
 import image from './Images/desconocido.gif';
 
