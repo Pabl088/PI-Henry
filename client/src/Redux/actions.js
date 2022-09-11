@@ -77,7 +77,7 @@ export function getById(id) {
 export function getByName(name) {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`/pokemons?name=${name}`);
+            const res = await axios.get(`/pokemons/?name=${name}`);
             dispatch({
                 type: GET_POKEMON_BY_NAME,
                 payload: res.data,
