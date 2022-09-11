@@ -80,7 +80,7 @@ export function getByName(name) {
             const res = await axios.get(`/pokemons/?name=${name}`);
             dispatch({
                 type: GET_POKEMON_BY_NAME,
-                payload: res.data,
+                payload: res.data
             });
         } catch (error) {
             alert(`El pokemon ${name} no existe`);

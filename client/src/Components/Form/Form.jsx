@@ -110,7 +110,7 @@ export default function Form() {
                         <form onSubmit={handleSubmit} autoComplete="off">
                             <div className={s.DivInput}>
                                 <label className={s.Label}>Nombre:</label>
-                                <input className={s.InputFormName} type="text" name="nombre" placeholder="Nombre..." value={input.nombre} onChange={handleChange} onBlur={handleBlur} required></input>
+                                <input className={s.InputFormName} type="text" name="nombre" placeholder="Nombre..." value={input.nombre.toLowerCase()} onChange={handleChange} onBlur={handleBlur} required></input>
                                 {errors.name ? <span className={s.warning}>{errors.name}</span> : null}
                             </div>
                             <div className={s.DivInput}>
