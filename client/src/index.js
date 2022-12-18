@@ -7,8 +7,8 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './Redux/store.js';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-import dotenv from 'dotenv';
-dotenv.config();
+//import dotenv from 'dotenv';
+//dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001';
 
