@@ -20,6 +20,7 @@ function Reducer(state = initialState, action) {
             return { ...state, allCurrentPokemons: action.payload };
 
         case LOAD_TYPES:
+            console.log(action.payload)
             return { ...state, types: action.payload };
 
         case GET_POKEMON_BY_ID:
