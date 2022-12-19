@@ -96,8 +96,8 @@ export default function Home() {
             </div>
             <div className={s.containerCard}>
                 {
-                    pokemons.length
-                        ? <> {pokemons.slice((page - 1) * forEachPage, (page - 1) * forEachPage + forEachPage)
+                    pokemons.length ?
+                        <> {pokemons.slice((page - 1) * forEachPage, (page - 1) * forEachPage + forEachPage)
                             .map(p => <Card key={parseInt((Math.random * 1000))} {...p} />)}
                         </>
                         : !pokemons.nombre ?

@@ -14,9 +14,9 @@
 }
 
 .button {
-    position: fixed;
-    margin-top: 600px;
-    margin-left: 440px;
+    position: absolute;
+    margin-top: 750px;
+    margin-left: 500px;
     background-image: url(./Images/boton-start.png);
     height: 80px;
     width: 180px;
