@@ -50,6 +50,8 @@ export function getTypes() {
     return async function (dispatch) {
         try {
             const res = await axios.get(`/types`);
+            console.log(res);
+            console.log(res.data);
             dispatch({
                 type: LOAD_TYPES,
                 payload: res.data
