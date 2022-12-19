@@ -20,6 +20,7 @@ export default function Home() {
 
     const pokemons = useSelector(state => state.allCurrentPokemons);
     const types = useSelector(state => state.types);
+    console.log(types)
 
     let max = pokemons.length > 1 ? Math.ceil(pokemons.length / forEachPage) : 1;
 
