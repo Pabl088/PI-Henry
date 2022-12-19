@@ -1,5 +1,7 @@
 import axios from "axios";
 
+console.log(process.env.REACT_APP_API);
+
 export function getAllPokemons() {
     return async function (dispatch) {
         try {
