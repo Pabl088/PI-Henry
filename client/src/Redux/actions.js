@@ -1,11 +1,11 @@
 import axios from "axios";
 
-console.log(process.env.REACT_APP_API);
+const URL_BASE = process.env.REACT_APP_API;
 
 export function getAllPokemons() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons`);
+            const res = await axios.get(`${URL_BASE}/pokemons`);
             dispatch({
                 type: GET_ALL_POKEMONS,
                 payload: res.data
@@ -19,7 +19,7 @@ export function getAllPokemons() {
 export function getPokemons() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons`);
+            const res = await axios.get(`${URL_BASE}/pokemons`);
             dispatch({
                 type: LOAD_POKEMONS,
                 payload: res.data
@@ -33,9 +33,7 @@ export function getPokemons() {
 export function getTypes() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/types`);
-            console.log(res);
-            console.log(res.data);
+            const res = await axios.get(`${URL_BASE}/types`);
             dispatch({
                 type: LOAD_TYPES,
                 payload: res.data
@@ -49,7 +47,7 @@ export function getTypes() {
 export function getById(id) {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons/${id}`);
+            const res = await axios.get(`${URL_BASE}/pokemons/${id}`);
             dispatch({
                 type: GET_POKEMON_BY_ID,
                 payload: res.data
@@ -63,7 +61,7 @@ export function getById(id) {
 export function getByName(name) {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons/?name=${name}`);
+            const res = await axios.get(`${URL_BASE}/pokemons/?name=${name}`);
             dispatch({
                 type: GET_POKEMON_BY_NAME,
                 payload: res.data
@@ -104,7 +102,7 @@ export function orderPokemons(orden, tipo) {
 export function getCreates() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons`);
+            const res = await axios.get(`${URL_BASE}/pokemons`);
             dispatch({
                 type: GET_CREATES,
                 payload: res.data
@@ -118,7 +116,7 @@ export function getCreates() {
 export function getAPI() {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons`);
+            const res = await axios.get(`${URL_BASE}/pokemons`);
             dispatch({
                 type: GET_API,
                 payload: res.data
@@ -132,7 +130,7 @@ export function getAPI() {
 export function createPokemon(payload) {
     return async function (dispatch) {
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API}/pokemons/create`, payload);
+            const res = await axios.post(`${URL_BASE}/pokemons/create`, payload);
             dispatch({
                 type: CREATE_POKEMON,
                 payload: res.data
@@ -146,7 +144,7 @@ export function createPokemon(payload) {
 export function getLastCreated(name) {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/pokemons?name=${name}`);
+            const res = await axios.get(`${URL_BASE}/pokemons?name=${name}`);
             dispatch({
                 type: LAST_CREATED,
                 payload: res.data,

@@ -20,7 +20,6 @@ export default function Home() {
 
     const pokemons = useSelector(state => state.allCurrentPokemons);
     const types = useSelector(state => state.types);
-    console.log(types)
 
     let max = pokemons.length > 1 ? Math.ceil(pokemons.length / forEachPage) : 1;
 
@@ -82,7 +81,6 @@ export default function Home() {
                         <select id="filter" name="filter" onChange={handleTypes} className={s.buttons} >
                             <option value='' selected disabled hidden>ORDENAR POR TIPO</option>
                             <option value={'TODOS'} className={s.select}>TODOS</option>
-                            {console.log(types)}
                             {
                                 types && types.length && types.map((t, i) => <option key={i} value={`${t.nombre}`} className={s.select}>{`${t.nombre.toUpperCase()}`}</option>)
                             }
