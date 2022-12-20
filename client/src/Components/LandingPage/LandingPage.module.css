@@ -31,9 +31,9 @@
 }
 
 .loading {
-    position: fixed;
-    margin-top: 590px;
-    margin-left: 440px;
+    position: absolute;
+    margin-top: 750px;
+    margin-left: 500px;
     background-image: url(./Images/loading.gif);
     height: 120px;
     width: 200px;
