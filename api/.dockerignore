@@ -1,0 +1,17 @@
+.env
+
+node_modules/
+vendor/
+
+*.log
+logs/
+tmp/
+
+.git/
+.gitignore
+
+dist/
+build/
+
+.DS_Store
+Thumbs.db
