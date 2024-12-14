@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
   database: PGDATABASE,
   dialect: "postgres",
   host: PGHOST,
-  port: PGPORT,
+  // port: PGPORT,
   username: PGUSER,
   password: PGPASSWORD,
   pool: {
